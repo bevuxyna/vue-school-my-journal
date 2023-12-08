@@ -1,2 +1,30 @@
-# vue-school-my-journal
-Learn how to use TypeScript in Vue projects to supercharge IDE's error detection and autocompletion, as well as provide type safe code that's easier to reason about and refactor.
+# Boilerplate Code for Typescript with Vue.js 3 Course
+
+This is the boilerplate code for the TypeScript with Vue.js 3 Course.
+
+## How to Install
+```sh
+npx degit vueschool/ts-vue-boilerplate 
+```
+```sh
+npm install
+npm run dev
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```

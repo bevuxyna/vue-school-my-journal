@@ -9,6 +9,8 @@ const emoji = ref<Emoji | null>(null);
 const charCount = computed(() => text.value.length);
 const maxChars = 280;
 
+defineEmits(['create']);
+
 const handleTextInput = (event: Event) => {
   const textArea = event.target as HTMLTextAreaElement;
   if (textArea.value.length <= maxChars) {
@@ -20,7 +22,7 @@ const handleTextInput = (event: Event) => {
 }
 </script>
 <template>
-  <form class="entry-form" @submit.prevent>
+  <form class="entry-form" @submit.prevent="emit('create', { text, emoji })">
     <textarea :value="text" @keyup="handleTextInput" placeholder="New Journal Entry for vmelnikova_io"></textarea>
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">

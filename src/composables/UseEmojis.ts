@@ -1,6 +1,6 @@
 import type { Component } from "@vue/runtime-core";
 import { reactive } from "vue";
-import type {Emoji} from "@/types/Emoji";
+import type { Emoji } from "@/types/Emoji";
 
 const files: { [key: string]: unknown } = import.meta.globEager(
   "../assets/icons/emojis/*.svg"

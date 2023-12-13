@@ -13,7 +13,7 @@ const { findEmoji } = UseEmojis();
     <div class="entry-footer">
       <DateDisplay :date="new Date()" class="mr-2" />
       |
-      <span class="ml-2">danielkelly_io</span>
+      <span class="ml-2">vmelnikova_io</span>
     </div>
   </div>
 </template>

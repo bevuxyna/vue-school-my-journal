@@ -7,13 +7,24 @@ import type {Emoji} from "@/types/Emoji";
 const text = ref('');
 const emoji = ref<Emoji | null>(null);
 const charCount = computed(() => text.value.length);
+const maxChars = 280;
+
+const handleTextInput = (event: Event) => {
+  const textArea = event.target as HTMLTextAreaElement;
+  if (textArea.value.length <= maxChars) {
+    text.value = textArea.value;
+  } else {
+    text.value = textArea.value = textArea.value.substring(0, maxChars);
+  }
+
+}
 </script>
 <template>
   <form class="entry-form" @submit.prevent>
-    <textarea v-model="text" placeholder="New Journal Entry for vmelnikova_io"></textarea>
+    <textarea :value="text" @keyup="handleTextInput" placeholder="New Journal Entry for vmelnikova_io"></textarea>
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
-      <span>{{ charCount }} / 280</span>
+      <span>{{ charCount }} / {{ maxChars }}</span>
       <button>Remember <ArrowCircleRight width="20" /></button>
     </div>
   </form>

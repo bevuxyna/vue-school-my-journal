@@ -4,18 +4,23 @@ import EntryEditor from "./components/EntryEditor.vue";
 import EntryCard from "@/components/EntryCard.vue";
 import {reactive} from "vue";
 import type {User} from "@/types/User";
+import type {Emoji} from "@/types/Emoji";
 
 const user: User = reactive({
   id: 1,
   username: "vmelnikova",
   settings: [],
 })
+
+const handleCreateEntry = (entry: { text: string, emoji: Emoji | null}) => {
+
+}
 </script>
 
 <template>
   <main class="container m-auto p-10">
     <TheHeader />
-    <EntryEditor />
+    <EntryEditor @create="handleCreateEntry" />
     <ul>
       <li>
         <EntryCard />

@@ -9,7 +9,7 @@ const emoji = ref<Emoji | null>(null);
 const charCount = computed(() => text.value.length);
 const maxChars = 280;
 
-defineEmits(['create']);
+defineEmits<{ (e: 'create', entry: { text: string, emoji: Emoji | null}): void }>();
 
 const handleTextInput = (event: Event) => {
   const textArea = event.target as HTMLTextAreaElement;

@@ -10,7 +10,7 @@ const emoji = ref<Emoji | null>(null);
 const charCount = computed(() => body.value.length);
 const maxChars = 280;
 
-defineEmits<{ (e: 'create', entry: Entry): void }>();
+const emit = defineEmits<{ (e: 'create', entry: Entry): void }>();
 
 const handleTextInput = (event: Event) => {
   const textArea = event.target as HTMLTextAreaElement;
@@ -19,12 +19,18 @@ const handleTextInput = (event: Event) => {
   } else {
     body.value = textArea.value = textArea.value.substring(0, maxChars);
   }
+};
 
+const handleSubmit = () => {
+  emit('create', { body: body.value, emoji: emoji.value, createdAt: new Date(), userId: 1, id: Math.random() });
+  body.value = '';
+  emoji.value = null;
 }
 </script>
+
 <template>
-  <form class="entry-form" @submit.prevent="$emit('create', { body, emoji, createdAt: new Date(), userId: 1, id: Math.random() })">
-    <textarea :value="text" @keyup="handleTextInput" placeholder="New Journal Entry for vmelnikova_io"></textarea>
+  <form class="entry-form" @submit.prevent="handleSubmit">
+    <textarea :value="body" @keyup="handleTextInput" placeholder="New Journal Entry for vmelnikova_io"></textarea>
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
       <span>{{ charCount }} / {{ maxChars }}</span>
